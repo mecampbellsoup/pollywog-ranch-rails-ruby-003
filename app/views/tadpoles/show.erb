@@ -1,0 +1,8 @@
+<h1><%= @tadpole.name %> Tadpole</h1>
+<p>color: <%= @tadpole.color %></p>
+<p>parent: <a href="/frogs/<%= @tadpole.frog.id %>"><%= @tadpole.frog.name %></a></p>
+<p>lives: <a href="/ponds/<%= @tadpole.frog.pond.id %>"><%= @tadpole.frog.pond.name %></a></p>
+<%= button_to "Evolve to frog!", evolve_frog_tadpole_path(@tadpole.frog, @tadpole.id), :method=> :post %><br />
+<%= link_to "Back", tadpoles_path %> | 
+<%= link_to "Edit", edit_tadpole_path(@tadpole) %> | 
+<%= link_to "Delete", @tadpole, :method => "delete" %>

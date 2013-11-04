@@ -1,4 +1,18 @@
 PollywogRanchRailsRuby003::Application.routes.draw do
+  
+  resources :ponds
+  resources :frogs do
+    resources :tadpoles, only: [:new, :create, :show] do
+      member do
+        post 'evolve'
+      end
+    end
+  end
+  resources :tadpoles, only: [:index, :edit, :update, :destroy]
+
+  get '/', to: redirect('/ponds')
+  get '/tadpoles/:id' => 'tadpoles#show', as: :tadpole_show
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

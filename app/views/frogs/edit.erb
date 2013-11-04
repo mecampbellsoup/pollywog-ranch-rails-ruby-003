@@ -1,0 +1,18 @@
+<h1>Edit <%= @frog.name %></h1>
+
+<%= form_for @frog do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :color %>:
+  <%= f.text_field :color %><br />
+
+  <select id="lives" name="pond_id">
+    <% @ponds.each do |pond| %>
+      <option value="<%= pond.id %>"><%= pond.name %></option>
+    <% end %>
+  </select>
+
+  <%= f.submit %>
+<% end %>
+<%= link_to "Cancel", @frog %>
